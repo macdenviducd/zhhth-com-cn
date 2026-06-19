@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://macdenviducd.github.io/zhhth-com-cn/sitemap.xml
