@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南宫导航 · 资料整理与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf7f2;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: #2c2b28;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fffcf7;
+            border-radius: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2rem;
+        }
+
+        /* hero 区 */
+        .hero {
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #ede8df;
+            padding-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 460;
+            letter-spacing: 0.02em;
+            color: #34312c;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #7a756b;
+            margin-top: 0.25rem;
+            font-weight: 380;
+        }
+
+        .hero .sub i {
+            font-style: normal;
+            background: #ede8df;
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #5d5950;
+            margin-right: 0.4rem;
+        }
+
+        /* 提示框 / 引用块 */
+        .insight-box {
+            background: #f4efe6;
+            border-left: 4px solid #b7aa98;
+            padding: 1.2rem 1.6rem;
+            margin: 2rem 0 2.2rem 0;
+            border-radius: 0 16px 16px 0;
+            font-size: 0.98rem;
+            color: #3f3c36;
+        }
+
+        .insight-box strong {
+            font-weight: 500;
+            color: #2c2b28;
+        }
+
+        .insight-box a {
+            color: #6b5e4e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c7baa8;
+            font-weight: 450;
+        }
+
+        .insight-box a:hover {
+            color: #3f352a;
+            text-decoration-color: #8f7e68;
+        }
+
+        /* 卡片区域 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .card {
+            flex: 1 1 220px;
+            background: #fbf9f5;
+            border-radius: 20px;
+            padding: 1.5rem 1.3rem;
+            border: 1px solid #ece6dc;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 440;
+            letter-spacing: 0.01em;
+            color: #3e3a33;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px dashed #d9d0c2;
+            padding-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #56524a;
+            margin-bottom: 0.3rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #e7dfd3;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #4e4940;
+            margin-top: 0.6rem;
+        }
+
+        /* 适合人群列表（非卡片，类似文章段落） */
+        .audience-section {
+            margin: 2.2rem 0 2rem;
+        }
+
+        .audience-section h2 {
+            font-size: 1.5rem;
+            font-weight: 420;
+            color: #3b3730;
+            margin-bottom: 0.8rem;
+        }
+
+        .audience-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            padding: 0;
+        }
+
+        .audience-list li {
+            background: #f0ebe3;
+            padding: 0.2rem 1rem 0.2rem 1.8rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            color: #3f3b34;
+            position: relative;
+        }
+
+        .audience-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.7rem;
+            font-weight: 700;
+            color: #8c7d6b;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: none;
+            padding: 0.2rem 0;
+            margin: 2rem 0 1.8rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .link-paragraph a {
+            color: #5d4f3d;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c1b2a0;
+            font-weight: 450;
+        }
+
+        .link-paragraph a:hover {
+            color: #352f28;
+            text-decoration-color: #7f6c57;
+        }
+
+        /* 常见问题摘要 */
+        .faq-mini {
+            margin-top: 2.8rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e6dfd4;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.25rem;
+            font-weight: 410;
+            color: #3d3931;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item .q {
+            font-weight: 450;
+            color: #4f4a40;
+            min-width: 3.8rem;
+        }
+
+        .faq-item .a {
+            color: #5e5950;
+        }
+
+        .faq-item .a a {
+            color: #5d4f3d;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #d1c3b2;
+        }
+
+        .faq-item .a a:hover {
+            color: #302b24;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            margin-top: 3.5rem;
+            font-size: 0.85rem;
+            color: #9b9488;
+            text-align: left;
+            border-top: 1px solid #ece4da;
+            padding-top: 1.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 540px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-grid {
+                flex-direction: column;
+            }
+
+            .card {
+                flex: 1 1 auto;
+            }
+
+            .audience-list {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .audience-list li {
+                padding: 0.2rem 1rem 0.2rem 1.8rem;
+                width: fit-content;
+            }
+
+            .insight-box {
+                padding: 1rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .container {
+                border-radius: 24px;
+                padding: 1.2rem 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>资料整理与信息索引</h1>
+        <div class="sub"><i>位置·脉络·聚合</i> 从散落的页面到有序的指引</div>
+    </div>
+
+    <!-- 提示框：引用 + 自然链接 -->
+    <div class="insight-box">
+        <strong>日常整理的一种思路</strong><br>
+        做信息收集久了就会发现，最难的往往不是找到某个网站，而是每次都需要重新回忆、重新翻找。<br>
+        后来慢慢积累起一个以地图为线索的索引方式——把零散的站点按区域、类别、使用频率重新梳理。<br>
+        如果你也习惯用「位置➕内容」来组织书签，或许可以看看这个叫 <a href="https://map-nangong.com">南宫导航</a> 的页面，它把这种思路做成了可视化的导览。
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>快速定位</h3>
+            <p>按城市、片区、场景归纳常用页面，减少翻找历史记录的次数。适合日常查询、区域生活索引。</p>
+            <span class="tag">信息聚合</span>
+        </div>
+        <div class="card">
+            <h3>内容归档</h3>
+            <p>把分散的资料按逻辑分组，同一类目下的站点互相参照，适合做研究、报告或兴趣探索的前期整理。</p>
+            <span class="tag">卡片式阅览</span>
+        </div>
+        <div class="card">
+            <h3>轻量导航</h3>
+            <p>不追求大而全，更看重常用与实用。适合作为浏览器起始页或收藏夹的补充，保持索引的清爽感。</p>
+            <span class="tag">极简入口</span>
+        </div>
+    </div>
+
+    <!-- 适合人群（列表式） -->
+    <div class="audience-section">
+        <h2>这样的索引适合谁</h2>
+        <ul class="audience-list">
+            <li>日常需要快速找到本地服务页面的居民</li>
+            <li>信息整理爱好者，喜欢按地图逻辑归档</li>
+            <li>偶尔需要查资料但不想记住大量网址的人</li>
+            <li>对城市生活类站点有持续关注需求的朋友</li>
+        </ul>
+    </div>
+
+    <!-- 自然链接段落（句子嵌入，无“进入、点击”等词） -->
+    <div class="link-paragraph">
+        资料整理不一定要用复杂的工具，有时候一个按地理位置排列的索引就能让查找效率提升不少。比如我自己常用的 <a href="https://map-nangong.com">南宫导航</a>，就是把不同类别的页面按照城市和功能区块重新分组，看起来像一张可点击的信息地图。每次需要找某个区域的服务或资讯，直接按图索骥就行，比从浏览器历史里翻要省事很多。
+    </div>
+
+    <!-- 另一个引用/提示框，侧重场景 -->
+    <div class="insight-box" style="border-left-color: #b8a48c; margin-top: 1.8rem;">
+        <strong>一个使用场景</strong><br>
+        下班后想查查附近有什么新开放的场馆、图书馆或者社区活动，如果有一个按街道或片区整理的站点列表，就不用一个个去搜了。<br>
+        这也是为什么我觉得 <a href="https://map-nangong.com">南宫导航</a> 这种形式挺实用——把地理位置作为第一维度，信息自然就规整了。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>一些常见的疑问</h3>
+        <div class="faq-item">
+            <span class="q">覆盖哪些内容？</span>
+            <span class="a">主要围绕城市生活、公共服务、本地资讯、文化场所等类别，按区域索引。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">页面会更新吗？</span>
+            <span class="a">不定期补充和调整分类，保持常用链接的有效性。可以把它看作一个动态的索引本。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">和普通导航站有什么不同？</span>
+            <span class="a">更侧重「位置」这个线索。如果你习惯按地图找信息，可能会觉得这种组织方式更直观。欢迎进去看看 <a href="https://map-nangong.com">南宫导航</a> 的实际布局。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        以资料整理为起点，保持索引的克制与实用。
+    </div>
+</div>
+</body>
+</html>
